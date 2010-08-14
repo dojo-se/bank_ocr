@@ -1,7 +1,17 @@
+#---------------------------------------------
+# 124 = '|'
+# 32  = ' '
+# 95  = '_'
+#---------------------------------------------
+
 class BankOcr
   def initialize(string)
     @ocr = string
   end
+
+  @@map = {
+           " _ \n| |\n|_|\n   \n"=>"0"
+          }
 
   def extract
     length = @ocr.length / 36;
@@ -20,17 +30,12 @@ class BankOcr
   def convert_algarismos(algarismos)
     number = ""
     algarismos.each do |a|
-      number << '0'
+      number << @@map[a]
     end
     number
   end
  
   def convert
-#---------------------------------------------
-# 124 = |
-# 32 = ' '
-# 95 = _
-#---------------------------------------------
     if @ocr[1] == 32
       '111111111'
     elsif @ocr[28] == 124
