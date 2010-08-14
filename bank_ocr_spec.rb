@@ -10,7 +10,9 @@ class BankOcr
   end
 
   @@map = {
-           " _ \n| |\n|_|\n   \n"=>"0"
+           " _ \n| |\n|_|\n   \n"=>"0",
+           "   \n  |\n  |\n   \n"=>"1",
+           " _ \n _|\n|_ \n   \n"=>"2"
           }
 
   def extract
