@@ -9,21 +9,22 @@ class BankOcr
 # 32 = ' '
 # 95 = _
 #---------------------------------------------
-
-#    @ocr[0][0] do |line|
-#      if line.chars.first == " " return "000000000"
-#    end
-
+    
+    # Monta uma variavel number com cada algarismo
+    (0..8).each do |i|
+      number = ""
+      @ocr.each_line do |line|
+        number << line.slice(0,3) + "\n"
+      end
+      p number
+    end
     if @ocr[1] == 32
       '111111111'
     elsif @ocr[28] == 124
-       '000000000'
+      '000000000'
     else
-       '222222222'
+      '222222222'
     end
-#    else
-#      '111111111'
-#    end
   end
 end
 
