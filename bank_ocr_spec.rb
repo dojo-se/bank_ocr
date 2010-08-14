@@ -9,15 +9,18 @@ class BankOcr
 # 32 = ' '
 # 95 = _
 #---------------------------------------------
-    
+    algarismos = []
     # Monta uma variavel number com cada algarismo
-    (0..8).each do |i|
+    (0..8).each do |algarismopos|
       number = ""
       @ocr.each_line do |line|
-        number << line.slice(0,3) + "\n"
+        number << line.slice(3*algarismopos,3) + "\n"
       end
-      p number
+      algarismos << number
     end
+
+    p algarismos
+
     if @ocr[1] == 32
       '111111111'
     elsif @ocr[28] == 124
