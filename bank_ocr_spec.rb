@@ -17,8 +17,12 @@ class BankOcr
     algarismos
   end
 
-  def convert_algarismo
-    '0'    
+  def convert_algarismos(algarismos)
+    number = ""
+    algarismos.each do |a|
+      number << '0'
+    end
+    number
   end
  
   def convert
@@ -27,8 +31,6 @@ class BankOcr
 # 32 = ' '
 # 95 = _
 #---------------------------------------------
-    p extract 
-
     if @ocr[1] == 32
       '111111111'
     elsif @ocr[28] == 124
@@ -36,7 +38,7 @@ class BankOcr
     elsif @ocr[29] == 95
       '222222222'
     else
-      convert_algarismo
+      convert_algarismos(extract)
     end
   end
 end
