@@ -16,7 +16,8 @@ class BankOcr
           }
 
   def extract
-    length = @ocr.length / 36;
+    
+    length = (@ocr.length / 12) - 1 
     algarismos = []
     # Monta uma variavel number com cada algarismo
     (0..length).each do |algarismopos|
@@ -38,15 +39,15 @@ class BankOcr
   end
  
   def convert
-    if @ocr[1] == 32
-      '111111111'
-    elsif @ocr[28] == 124
-      '000000000'
-    elsif @ocr[29] == 95
-      '222222222'
-    else
+#    if @ocr[1] == 32
+#      '111111111'
+#    elsif @ocr[28] == 124
+#      '000000000'
+#    elsif @ocr[29] == 95
+#      '222222222'
+#    else
       convert_algarismos(extract)
-    end
+#   end
   end
 end
 
