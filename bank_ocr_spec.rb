@@ -3,12 +3,7 @@ class BankOcr
     @ocr = string
   end
 
-  def convert
-#---------------------------------------------
-# 124 = |
-# 32 = ' '
-# 95 = _
-#---------------------------------------------
+  def extract
     algarismos = []
     # Monta uma variavel number com cada algarismo
     (0..8).each do |algarismopos|
@@ -18,8 +13,16 @@ class BankOcr
       end
       algarismos << number
     end
-
-    p algarismos
+    algarismos
+  end
+ 
+  def convert
+#---------------------------------------------
+# 124 = |
+# 32 = ' '
+# 95 = _
+#---------------------------------------------
+    p extract 
 
     if @ocr[1] == 32
       '111111111'
