@@ -12,12 +12,12 @@ class BankOcr
   @@map = {
            " _ \n| |\n|_|\n   \n"=>"0",
            "   \n  |\n  |\n   \n"=>"1",
-           " _ \n _|\n|_ \n   \n"=>"2"
+           " _ \n _|\n|_ \n   \n"=>"2",
+           " _ \n _|\n _|\n   \n"=>"3"
           }
 
   def extract
-    
-    length = (@ocr.length / 12) - 1 
+    length = (@ocr.length / 12) - 1
     algarismos = []
     # Monta uma variavel number com cada algarismo
     (0..length).each do |algarismopos|
@@ -37,7 +37,7 @@ class BankOcr
     end
     number
   end
- 
+
   def convert
 #    if @ocr[1] == 32
 #      '111111111'
@@ -71,7 +71,7 @@ STRING
                            
 STRING
 
-    BankOcr.new(entrada).convert.should == '111111111'      
+    BankOcr.new(entrada).convert.should == '111111111'
   end
 
   it "should return 222222222" do
@@ -82,7 +82,7 @@ STRING
                            
 STRING
 
-    BankOcr.new(entrada).convert.should == '222222222'      
+    BankOcr.new(entrada).convert.should == '222222222'
   end
 
   it "should return 0" do
@@ -95,7 +95,16 @@ STRING
     BankOcr.new(entrada).convert.should == '0'
   end
 
+  it "should return 333333333" do
+    entrada = <<STRING
+ _  _  _  _  _  _  _  _  _ 
+ _| _| _| _| _| _| _| _| _|
+ _| _| _| _| _| _| _| _| _|
+                           
+STRING
 
+    BankOcr.new(entrada).convert.should == '333333333'
+  end
 end
 
 
